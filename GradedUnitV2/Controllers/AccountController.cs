@@ -9,7 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GradedUnitV2.Models;
-
+//jack fletcher19/5/17
 namespace GradedUnitV2.Controllers
 {
     [Authorize]
@@ -150,8 +150,8 @@ namespace GradedUnitV2.Controllers
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
-            {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+            { //changed register view model to include the additional user attributes forename surname and mobilenumber
+                var user = new ApplicationUser { UserName = model.Email, FirstName = model.FirstName, Surname = model.Surname, MobileNumber = model.MobileNumber, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
