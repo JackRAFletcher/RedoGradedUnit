@@ -31,6 +31,7 @@ namespace GradedUnitV2.Controllers
                 UserViewModel userViewModel = new UserViewModel();
                 userViewModel.FirstName = item.FirstName;
                 userViewModel.Surname = item.Surname;
+                userViewModel.MobileNumber = item.MobileNumber;
                 userViewModel.UserName = item.UserName;
                 userViewModel.Email = item.Email;
                 userViewModel.LockoutEndDateUtc = item.LockoutEndDateUtc;
@@ -72,6 +73,7 @@ namespace GradedUnitV2.Controllers
                 }
                 var FirstName = paramUserViewModel.FirstName.Trim();
                 var Surname = paramUserViewModel.Surname.Trim();
+                var MobileNumber = paramUserViewModel.MobileNumber.Trim();
                 var Email = paramUserViewModel.Email.Trim();
                 var UserName = paramUserViewModel.Email.Trim();
                 var Password = paramUserViewModel.Password.Trim();
@@ -81,9 +83,13 @@ namespace GradedUnitV2.Controllers
                 {
                     throw new Exception("No First Name");
                 }
+                if (MobileNumber == "")
+                {
+                    throw new Exception("No MobileNumber");
+                }
                 if (Surname == "")
                 {
-                    throw new Exception("No Last Name");
+                    throw new Exception("No Surname");
                 }
                 if (Email == "")
                 {
@@ -567,6 +573,7 @@ namespace GradedUnitV2.Controllers
             if (result == null) throw new Exception("Could not find the User");
             objUserViewModel.FirstName = result.FirstName;
             objUserViewModel.Surname = result.Surname;
+            objUserViewModel.MobileNumber = result.MobileNumber;
             objUserViewModel.UserName = result.UserName;
             objUserViewModel.Email = result.Email;
             objUserViewModel.LockoutEndDateUtc = result.LockoutEndDateUtc;
